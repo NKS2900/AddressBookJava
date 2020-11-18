@@ -1,6 +1,8 @@
-package com.org;
+package AddressArrayList;
 
-public class UserInfo {
+class UserInfo {
+
+	String firstName;
 	String lastName;
 	String address;
 	String phoneNumber;
@@ -14,55 +16,13 @@ public class UserInfo {
 		this.phoneNumber = phoneNumber;
 		this.state = state;
 		this.zip = zip;
+
 	}
 
-	String firstName;
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getZip() {
-		return zip;
-	}
-
-	public void setZip(String zip) {
-		this.zip = zip;
+	public void print() {
+		
+		System.out.println(firstName + " \t  " + lastName +
+				  " \t  " + address + " \t  " + state + " \t   " +
+				  phoneNumber + " \t " + zip);
 	}
 }
