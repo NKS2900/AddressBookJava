@@ -1,20 +1,20 @@
-package com.org;
+package AddressArrayList;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
-public class AddressBook {
+class AddressBook {
 
 	ArrayList persons;
-	AddressBook ad;
-	UserInfo user;
+	Scanner scan = new Scanner(System.in);
 
 	public AddressBook() {
 		persons = new ArrayList();
 	}
 
 	public void addPerson() {
-		Scanner scan = new Scanner(System.in);
+
 		System.out.println("Enter First Name: ");
 		String firstName = scan.nextLine();
 		System.out.println("Enter Last Name: ");
@@ -28,16 +28,20 @@ public class AddressBook {
 		System.out.println("Enter zip code: ");
 		String zip = scan.nextLine();
 
-		user = new UserInfo(firstName, lastName, address, phoneNumber, state, zip);
-		persons.add(user);
+		UserInfo p = new UserInfo(firstName, lastName, address, phoneNumber, state, zip);
+		persons.add(p);
+		p.print();
 	}
 
-	public void searchPerson(String n) {
+	public void searchPerson() {
+		System.out.println("Enter Name to Search");
+		String s = scan.nextLine();
 		for (int i = 0; i < persons.size(); i++) {
 			UserInfo p = (UserInfo) persons.get(i);
 
-			if (n.equals(p.getFirstName())) {
-				ad.view();// p.print();
+			if (s.equals(p.firstName)) {
+				p.print();
+				break;
 			} else {
 				System.out.println("Name Not Found !!!");
 			}
@@ -45,20 +49,24 @@ public class AddressBook {
 	}
 
 	public void view() {
+
 		System.out.println("FirstName    LastName     City     State   Contact      Zip");
 		for (int i = 0; i < persons.size(); i++) {
-
-			System.out.println(user.getFirstName() + " \t  " + user.getLastName() + " \t  " + user.getAddress()
-					+ " \t  " + user.getState() + " \t   " + user.getPhoneNumber() + " \t " + user.getZip());
+			UserInfo p = (UserInfo) persons.get(i);
+			p.print();
 		}
+
 	}
 
-	public void deletePerson(String n) {
+	public void deletePerson() {
+		System.out.println("Enter Name to Delete");
+		String s = scan.nextLine();
 		for (int i = 0; i < persons.size(); i++) {
 			UserInfo p = (UserInfo) persons.get(i);
-			if (n.equals(p.firstName)) {
+			if (s.equals(p.firstName)) {
 				persons.remove(i);
 				System.out.println("User Removed Successfully");
+				break;
 			} else {
 				System.out.println("Name Not Found !!!");
 			}
